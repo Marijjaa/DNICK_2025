@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CakeApp</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid px-5">
+        <a class="navbar-brand text-danger fw-bold" href="/index">Cakery&Bakery</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Pricing</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="row bg-danger p-5">
+    <div class="col p-5">
+        <h1 class="text-light">Explore the wonderland of tastes!</h1>
+        <p class="text-light">Assignments for HCI Exam in January 2025</p>
+        <div class="d-flex">
+            <button class="btn btn-light">Get Started</button>
+            <button class="btn btn-outline-light ms-3">Learn More</button>
+        </div>
+    </div>
+    <div class="col">
+        <img src="{% static 'Screenshot_1.png' %}" style="width: 450px; height: 300px" alt=""/>
+    </div>
+</div>
+<div class="row bg-secondary-subtle justify-content-center p-5">
+    <p class="fs-4 w-75 text-center">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur corporis doloribus facere laudantium
+        provident repudiandae sint temporibus! Assumenda error et, incidunt maxime nobis obcaecati.
+    </p>
+    <p class="text-center fw-bold mt-2">
+        John Doe / CEO, Cakery&Bakery
+    </p>
+</div>
+<div class="row text-center p-5">
+    <h1 class="fw-bold text-danger">Products</h1>
+    <p class="text-secondary">Add more products in the edit form!</p>
+</div>
+
+<div class="row justify-content-center">
+    {% for cake in cakes %}
+        <div class="col-lg-4 m-4 card p-2" style="width: 18rem;">
+            <img src="{{ cake.image.url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ cake.name }}</h5>
+                <p class="card-text">{{ cake.description }}</p>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <img src="{{ cake.baker.image.url }}" alt="" class="rounded-circle">
+                    <p>{{ cake.baker }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<footer class="bg-danger d-flex justify-content-between px-5 py-2 mt-5">
+    <p class="text-light">Copyright HCI 2025</p>
+    <ul class="list-unstyled d-flex">
+        <li class="text-light">Privacy</li>
+        <li class="mx-3 text-light">Terms</li>
+        <li class="text-light">Add</li>
+    </ul>
+</footer>
+</body>
+</html>

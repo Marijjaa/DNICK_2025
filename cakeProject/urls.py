@@ -22,5 +22,6 @@ from cakeApp import views as cakeViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', cakeViews.index, name='index')
+    path('index/', cakeViews.index, name='index'),
+    path('add-cake/', cakeViews.add_cake, name='add-cake')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
